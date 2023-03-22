@@ -21,7 +21,7 @@ func crear(bot *tgbotapi.BotAPI, update tgbotapi.Update) {
 	r, err := e.Completion(ctx, &openai.CompletionOptions{
 		Prompt:    []string{text},
 		MaxTokens: 2048,
-		Model:     openai.ModelTextDavinci003,
+		Model:     openai.ModelGPT3TextDavinci003,
 	})
 
 	if err != nil {
@@ -40,7 +40,7 @@ func editar(bot *tgbotapi.BotAPI, update tgbotapi.Update, input string) {
 	ctx := context.Background()
 	e := openai.New(gpt3APIKey)
 	editResp, err := e.Edit(ctx, &openai.EditOptions{
-		Model:       openai.ModelTextDavinci003,
+		Model:       openai.ModelGPT3TextDavinci003,
 		Input:       input, //update.Message.ReplyToMessage.Text,
 		Instruction: text,
 		N:           1,
